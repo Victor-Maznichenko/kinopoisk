@@ -1,0 +1,39 @@
+@use './mixins' as *;
+@use './variables' as *;
+
+:root {
+   /*=== Colors === */
+   --color-white: #fff;
+   --color-gray: oklch(0.8594 0.0125 280.981);
+   --color-card: oklch(0.187 0.091 298.566);
+   --color-background: oklch(94% 0 90);
+   --color-text: oklch(23.161% 0.02 285);
+   --color-red: oklch(0.599 0.23883 22.797);
+   --color-purple-black: oklch(0.1903 0.04178 290.626);
+
+   /*=== border-radius === */
+   --border-radius-sm: 0.25rem;
+   --border-radius-md: 0.5rem;
+   --border-radius-lg: 0.75rem;
+   --border-radius-max: 1000rem;
+
+   /*=== Layers === */
+   --z-under: -1;
+   --z-over: 1;
+   --z-second-over: 2;
+
+   /*=== Transitions === */
+   --trans-fast: 0.3s ease;
+   --trans-medium: 0.4s ease-in-out;
+
+   /*=== Fonts ===*/
+   --fs-heading_1: 4.5rem;
+   --fs-heading_2: 3rem;
+   --fs-heading_3: 2rem;
+   --fs-heading_4: 1.5rem;
+   --fs-heading_5: 1.25rem;
+   --fs-text_L: 1.125rem;
+   --fs-text_M: 1rem;
+   --fs-text_S: 0.75rem;
+}
+

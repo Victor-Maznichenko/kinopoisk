@@ -1,0 +1,3 @@
+bun lint-staged
+bun run build
+git add .

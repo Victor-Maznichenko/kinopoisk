@@ -1,0 +1,59 @@
+{
+  "name": "kinopoisk",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Corporate online phonebook application",
+  "author": {
+    "name": "Victor Maznichenko",
+    "email": "victor_maznichenko@mail.ru",
+    "url": "https://github.com/victor_maznichenko"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "swiper": "^12.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@chromatic-com/storybook": "^5.0.2",
+    "@rolldown/plugin-babel": "^0.2.1",
+    "@siberiacancode/eslint": "2.12.0",
+    "@storybook/addon-a11y": "^10.3.3",
+    "@storybook/addon-docs": "^10.3.3",
+    "@storybook/addon-vitest": "^10.3.3",
+    "@storybook/react-vite": "^10.3.3",
+    "@types/babel__core": "^7.20.5",
+    "@types/node": "^24.12.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/browser-playwright": "^4.1.1",
+    "@vitest/coverage-v8": "^4.1.1",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint-plugin-storybook": "^10.3.3",
+    "globals": "^17.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "playwright": "^1.58.2",
+    "sass-embedded": "^1.98.0",
+    "storybook": "^10.3.3",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.1",
+    "vitest": "^4.1.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run lint --fix"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+@use 'mixins' as *;
+
+@include font-face('Proxima nova', 400, 'Regular');
+@include font-face('Proxima nova', 500, 'Medium');
+@include font-face('Proxima nova', 600, 'SemiBold');
+@include font-face('Proxima nova', 700, 'Bold');
+@include font-face('Proxima nova', 800, 'Extrabold');
