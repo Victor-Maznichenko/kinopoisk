@@ -1,0 +1,53 @@
+
+@use "sass:map";
+
+.button {
+  font-weight: 600;
+  font-size: var(--fs-text_M);
+  line-height: 1;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1.125rem 1.5rem;
+  transition: opacity 0.25s, transform cubic-bezier(.3,0,0,1) 60ms;
+  border-radius: var(--border-radius-md);
+
+  &:hover {
+    transform: scale(1.04);
+  }
+
+  &:active {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.filled-red {
+  color: var(--color-white);
+  background-color: var(--color-red);
+}
+
+.outline-white, .outline-white-icon {
+  color: var(--color-white);
+  border: 0.0625rem solid var(--color-white);
+}
+
+.outline-white-icon {
+  line-height: 0;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.unstyled {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-block;
+  cursor: pointer;
+}

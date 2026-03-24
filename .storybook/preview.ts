@@ -1,15 +1,10 @@
 import type { Preview } from '@storybook/react-vite';
-// eslint-disable-next-line ts/ban-ts-comment
-// @ts-expect-error
-import '../src/shared/assets/styles/index.scss';
+import darkTheme from './dark-theme';
 
 const preview: Preview = {
   parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i
-      }
+    docs: {
+      theme: darkTheme
     }
   }
 };
