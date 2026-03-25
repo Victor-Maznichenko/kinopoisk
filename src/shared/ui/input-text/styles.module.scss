@@ -1,0 +1,81 @@
+.wrapper {
+    font-size: var(--fs-text-s);
+    color: var(--color-white-80);
+    width: 100%;
+}
+
+.blocked {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.field {
+    display: flex;
+    height: 2.5rem;
+    align-items: center;
+    column-gap: .375rem;
+    position: relative;
+    border-radius: var(--border-radius-sm);
+    box-shadow: inset 0 0 0  1px var(--color-text);
+    outline: 2px solid transparent;
+    outline-offset: -1px;
+    padding: .8125rem .75rem;
+    transition: outline-color 0.2s;
+
+    &:focus, &:focus-visible, &:focus-within {
+        outline-color: var(--color-white);
+    }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--color-gray-light) inset;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+    appearance: none;
+}
+
+.errorMessage {
+    color: var(--color-red);
+}
+
+.input {
+    flex: 1 0 auto;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    border: none;
+    color: inherit;
+
+    &::placeholder {
+        font-family: 'Proxima Nova', sans-serif;
+        color: var(--color-text);
+    }
+}
+
+.clearButton {
+    color: var(--color-gray-light);
+    line-height: 0;
+}
+
+.invalid .field {
+    box-shadow: inset 0 0 0  1px var(--color-red);
+    
+    &:focus, &:focus-visible, &:focus-within {
+        outline-color: var(--color-red);
+    }
+}
+
+.rounded .field {
+    border-radius: var(--border-radius-max);
+}
+
+.unstyled .field {
+    box-shadow: none;
+    outline: none;
+}

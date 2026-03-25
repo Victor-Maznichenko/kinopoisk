@@ -1,0 +1,18 @@
+.home {
+    padding: 170px 0 210px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url('@/shared/assets/images/main-background.webp');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% auto;
+}
+
+.info {
+    max-width: 26.625rem;
+}
+
+.description {
+    margin: 1.25rem 0 2.1875rem;
+}

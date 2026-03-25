@@ -12,11 +12,6 @@
   padding: 0;
 }
 
-::selection {
-  background: var(--color-orange-light);
-  color: var(--color-text);
-}
-
 html {
   --site-scale: calc(100vw / #{$desktop});
   font-size: calc(var(--site-scale) * 16px);
@@ -60,7 +55,7 @@ a {
 }
 
 .container {
-  max-width: 1140px;
+  max-width: 1430px;
   padding: 0 15px;
   margin: 0 auto;
 }

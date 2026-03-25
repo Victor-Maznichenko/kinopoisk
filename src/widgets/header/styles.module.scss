@@ -1,0 +1,24 @@
+.header, .start, .end, .navList {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    padding: 1.875rem 0;
+    border-bottom: 1px solid var(--color-white-15);
+    justify-content: space-between;
+}
+
+.start {
+    column-gap: 3.75rem;
+}
+
+.end, .navList {
+    column-gap: 1.875rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}

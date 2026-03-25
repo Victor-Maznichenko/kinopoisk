@@ -7,7 +7,8 @@ type TypographyStyle =
   | 'heading_4'
   | 'heading_5'
   | 'heading_6'
-  | 'text';
+  | 'text-m'
+  | 'text-s';
 
 interface TypographyOwnProps<E extends ElementType> {
   variant?: TypographyStyle;

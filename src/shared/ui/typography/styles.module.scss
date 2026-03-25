@@ -4,15 +4,16 @@
 .heading_4,
 .heading_5 {
   font-weight: 700;
+  color: var(--color-white);
 }
 
 .heading_6 {
   font-weight: 600;
+  color: var(--color-white);
 }
 
-.text_L,
-.text_M,
-.text_S {
+.text_m,
+.text_s {
   font-weight: 400;
 }
 
@@ -30,7 +31,12 @@
 @include init-heading(5);
 @include init-heading(6);
 
-.text {
-  font-size: var(--fs-text);
+.text-m {
+  font-size: var(--fs-text-m);
   line-height: 140%;
+}
+
+.text-s {
+  font-size: var(--fs-text-s);
+  line-height: 1;
 }

@@ -15,9 +15,10 @@ const meta = {
         'heading_2',
         'heading_3',
         'heading_4',
-        'text_L',
-        'text_M',
-        'text_S'
+        'heading_5',
+        'heading_6',
+        'text-m',
+        'text_s'
       ],
       description: 'Стиль типографики'
     },
@@ -48,7 +49,8 @@ export const AllVariants: Story = {
       <Typography variant='heading_4'>Heading 4 (24px)</Typography>
       <Typography variant='heading_5'>Heading 5 (20px)</Typography>
       <Typography variant='heading_6'>Heading 6 (18px)</Typography>
-      <Typography variant='text'>Text (16px) — обычный текст</Typography>
+      <Typography variant='text-m'>Text medium (16px) — обычный текст</Typography>
+      <Typography variant='text-s'>Text small (14px) — маленький текст</Typography>
     </div>
   )
 };

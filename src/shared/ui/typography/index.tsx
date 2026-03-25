@@ -7,7 +7,7 @@ export const Typography = <E extends ElementType = 'p'>({
   as,
   children,
   className,
-  variant = 'text',
+  variant = 'text-m',
   ...props
 }: TypographyProps<E>) => {
   const Component = as ?? 'p';

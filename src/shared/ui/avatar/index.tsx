@@ -18,7 +18,7 @@ export const Avatar = ({ src, variant = 'square', size = 56, text, ...props }: A
   >
     <Condition
       else={
-        <Condition else={<Icons.User size={20} />} then={getInitials(text!)} value={text} />
+        <Condition else={<Icons.User size={20} />} then={getInitials(text ?? '')} value={text} />
       }
       then={<img className={styles.img} src={src} {...props} />}
       value={src}
