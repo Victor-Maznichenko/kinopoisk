@@ -1,8 +1,13 @@
 .heading_1,
 .heading_2,
 .heading_3,
-.heading_4 {
+.heading_4,
+.heading_5 {
   font-weight: 700;
+}
+
+.heading_6 {
+  font-weight: 600;
 }
 
 .text_L,
@@ -14,7 +19,7 @@
 @mixin init-heading($size) {
   .heading_#{$size} {
     font-size: var(--fs-heading_#{$size});
-    line-height: 105%;
+    line-height: 1;
   }
 }
 
@@ -22,17 +27,10 @@
 @include init-heading(2);
 @include init-heading(3);
 @include init-heading(4);
+@include init-heading(5);
+@include init-heading(6);
 
-.text_L {
-  font-size: var(--fs-text_L);
-}
-
-.text_M {
-  font-size: var(--fs-text_M);
-  line-height: 120%;
-}
-
-.text_S {
-  font-size: var(--fs-text_S);
-  line-height: 150%;
+.text {
+  font-size: var(--fs-text);
+  line-height: 140%;
 }

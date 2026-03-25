@@ -42,13 +42,13 @@ export const AllVariants: Story = {
 
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
-      <Typography variant='heading_1'>Heading 1</Typography>
-      <Typography variant='heading_2'>Heading 2</Typography>
-      <Typography variant='heading_3'>Heading 3</Typography>
-      <Typography variant='heading_4'>Heading 4</Typography>
-      <Typography variant='text_L'>Text L — крупный текст</Typography>
-      <Typography variant='text_M'>Text M — средний текст</Typography>
-      <Typography variant='text_S'>Text S — мелкий текст</Typography>
+      <Typography variant='heading_1'>Heading 1 (72px)</Typography>
+      <Typography variant='heading_2'>Heading 2 (48px)</Typography>
+      <Typography variant='heading_3'>Heading 3 (32px)</Typography>
+      <Typography variant='heading_4'>Heading 4 (24px)</Typography>
+      <Typography variant='heading_5'>Heading 5 (20px)</Typography>
+      <Typography variant='heading_6'>Heading 6 (18px)</Typography>
+      <Typography variant='text'>Text (16px) — обычный текст</Typography>
     </div>
   )
 };
