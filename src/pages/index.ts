@@ -1,4 +1,4 @@
-export * from './home';
+export * from './home/ui';
 export * from './login';
 export * from './not-found';
 export * from './profile';

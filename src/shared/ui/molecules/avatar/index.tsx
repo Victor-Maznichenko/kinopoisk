@@ -1,7 +1,6 @@
 import type { ComponentProps } from 'react';
 import clsx from 'clsx';
-import { Condition } from '../condition';
-import { Icons } from '../icons';
+import { Condition, Icons } from '@/shared/ui/atoms';
 import { getInitials } from './lib';
 import styles from './styles.module.scss';
 

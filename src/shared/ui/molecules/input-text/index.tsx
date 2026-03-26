@@ -3,10 +3,7 @@ import clsx from 'clsx';
 import { useRef } from 'react';
 import { PatternFormat } from 'react-number-format';
 import { useForkRef } from '@/shared/lib';
-import { Button } from '../button';
-import { Condition } from '../condition';
-import { Icons } from '../icons';
-import { Typography } from '../typography';
+import { Button, Condition, Icons, Typography } from '@/shared/ui/atoms';
 import styles from './styles.module.scss';
 
 type InputTextVariants = 'default' | 'rounded' | 'unstyled';

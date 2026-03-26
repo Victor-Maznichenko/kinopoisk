@@ -12,24 +12,6 @@
   padding: 0;
 }
 
-html {
-  --site-scale: calc(100vw / #{$desktop});
-  font-size: calc(var(--site-scale) * 16px);
-  scrollbar-gutter: stable;
-
-  @include to($lg) {
-    --site-scale: calc(100vw / #{$lg});
-  }
-
-  @include to($tablet) {
-    --site-scale: calc(100vw / #{$tablet});
-  }
-
-  @include to($mobile) {
-    --site-scale: calc(100vw / #{$mobile});
-  }
-}
-
 body {
   font-family: 'Proxima Nova', sans-serif;
   background-color: var(--color-background);
