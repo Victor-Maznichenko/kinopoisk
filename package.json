@@ -16,10 +16,12 @@
     "preview": "vite preview",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "api:generate": "orval --config ./orval.config.ts"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.19",
+    "axios": "^1.13.6",
     "clsx": "^2.1.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
@@ -43,11 +45,14 @@
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/browser-playwright": "^4.1.1",
     "@vitest/coverage-v8": "^4.1.1",
+    "ajv": "^8.18.0",
+    "ajv-draft-04": "^1.0.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint-plugin-storybook": "^10.3.3",
     "globals": "^17.4.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
+    "orval": "^8.6.2",
     "playwright": "^1.58.2",
     "sass-embedded": "^1.98.0",
     "storybook": "^10.3.3",
