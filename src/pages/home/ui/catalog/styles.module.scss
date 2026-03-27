@@ -1,0 +1,23 @@
+.catalog {
+    padding: 60px 0;
+}
+
+.title {
+    margin-bottom: 60px;
+}
+
+.genresList {
+    margin-bottom: 64px;
+}
+
+.genre {
+    &Title {
+        text-transform: capitalize;
+        margin-bottom: 20px;
+    }
+
+    & + & {
+        margin-top: 50px;
+    }
+}
+

@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
+import { buildStaticURL } from '@/shared/lib';
+import { useMoviesStore } from '@/entities/movies';
 import { Button, SliderСoverflow, Typography } from '@/shared/ui';
-import waveSrc from './wave.jpg';
 import styles from './styles.module.scss';
 
 const HOMEPAGE_CONTENT = {
@@ -9,22 +11,30 @@ const HOMEPAGE_CONTENT = {
   buttonText: 'Смотреть бесплатно'
 };
 
-export const Main = () => (
-  <section className={styles.main}>
-    <div className={styles.info}>
-      <Typography variant='heading_2'>{HOMEPAGE_CONTENT.title}</Typography>
-      <Typography className={styles.description} variant='text-m'>{HOMEPAGE_CONTENT.description}</Typography>
-      <Button className={styles.button}>{HOMEPAGE_CONTENT.buttonText}</Button>
-    </div>
-    <SliderСoverflow.Root>
-      {
-        Array.from({ length: 8 }).map((_, i) => (
-          <SliderСoverflow.Slide className={styles.slide} key={i}>
-            <img className={styles.slide__img} src={waveSrc} />
-            <Typography as='h6'>Бесстыжие. 11 сезон. Финал</Typography>
-          </SliderСoverflow.Slide>
-        ))
-      }
-    </SliderСoverflow.Root>
-  </section>
-);
+export const Main = () => {
+  const { getPopularMovies, popularMovies } = useMoviesStore();
+
+  useEffect(() => {
+    getPopularMovies();
+  }, []);
+
+  return (
+    <section className={styles.main}>
+      <div className={styles.info}>
+        <Typography variant='heading_2'>{HOMEPAGE_CONTENT.title}</Typography>
+        <Typography className={styles.description} variant='text-m'>{HOMEPAGE_CONTENT.description}</Typography>
+        <Button className={styles.button}>{HOMEPAGE_CONTENT.buttonText}</Button>
+      </div>
+      <SliderСoverflow.Root>
+        {
+          popularMovies.map(({ id, title, poster_path }) => (
+            <SliderСoverflow.Slide className={styles.slide} key={id}>
+              <img className={styles.slide__img} src={buildStaticURL(poster_path)} />
+              <Typography as='h6'>{title}</Typography>
+            </SliderСoverflow.Slide>
+          ))
+        }
+      </SliderСoverflow.Root>
+    </section>
+  );
+};

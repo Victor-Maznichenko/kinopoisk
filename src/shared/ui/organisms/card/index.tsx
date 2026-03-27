@@ -3,14 +3,20 @@ import clsx from 'clsx';
 import { Typography } from '../../atoms';
 import styles from './styles.module.scss';
 
-export const Root = ({ className, ...props }: ComponentProps<'article'>) => (
-  <article className={clsx(styles.root, className)} {...props} />
-);
+interface MovieCardOwnProps {
+  categories?: string[];
+  previewSrc?: string;
+  title?: string;
+  rate?: number;
+}
 
-export const Image = ({ className, ...props }: ComponentProps<'img'>) => (
-  <img className={clsx(styles.img, className)} {...props} />
-);
+interface MovieCardProps extends MovieCardOwnProps, Omit<ComponentProps<'article'>, keyof MovieCardOwnProps> {}
 
-export const Title = ({ className, ...props }: ComponentProps<typeof Typography<'h5'>>) => (
-  <Typography variant='heading_5' as='h5' {...props} />
-);
+export const MovieCard = ({ className, previewSrc, title, ...props }: MovieCardProps) => {
+  return (
+    <article className={clsx(styles.root, className)} {...props}>
+      <img className={styles.img} src={previewSrc} loading='lazy' alt={title} />
+      <Typography variant='heading_5' as='h5'>{title}</Typography>
+    </article>
+  );
+};
