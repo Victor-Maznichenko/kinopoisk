@@ -1,9 +1,11 @@
 export const ROUTES = {
   ROOT: '/',
   PROFILE: '/profile',
-  FILMS: '/films',
-  SERIALS: '/serials',
+  MOVIES: '/movies',
+  MOVIE: '/movies/:id',
+  SERIALS: '/tv',
   COLLECTIONS: '/collections',
+  CATALOG: '/catalog',
   REGISTER: '/register',
   LOGIN: '/login'
 };

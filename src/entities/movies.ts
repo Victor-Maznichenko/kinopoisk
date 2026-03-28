@@ -66,5 +66,3 @@ export const useMoviesStore = create<MoviesState>()((set) => ({
     }
   }
 }));
-
-// `https://www.themoviedb.org/authenticate/${REQUEST_TOKEN}?redirect_to=${window.location.origin}/approved`

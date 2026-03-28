@@ -1,14 +1,15 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router';
 import { ROUTES } from '@/shared/lib';
-import { HomePage, LoginPage, NotFoundPage, ProfilePage, RegisterPage } from '@/pages';
+import { HomePage, LoginPage, MoviePage, NotFoundPage, ProfilePage, RegisterPage } from '@/pages';
 import { Footer, Header } from '@/widgets';
+import styles from './styles.module.scss';
 
 const Layout = () => (
-  <div className='container'>
-    <Header />
+  <>
+    <Header className={styles.header} />
     <Outlet />
     <Footer />
-  </div>
+  </>
 );
 
 const router = createBrowserRouter([
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: ROUTES.PROFILE, element: <ProfilePage /> },
+      { path: ROUTES.MOVIE, element: <MoviePage /> },
       { path: ROUTES.LOGIN, element: <LoginPage /> },
       { path: ROUTES.REGISTER, element: <RegisterPage /> }
     ]

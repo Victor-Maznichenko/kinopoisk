@@ -12,6 +12,7 @@ type TypographyStyle =
 
 interface TypographyOwnProps<E extends ElementType> {
   variant?: TypographyStyle;
+  primaryColor?: boolean;
   as?: E;
 }
 

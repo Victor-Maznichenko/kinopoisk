@@ -1,0 +1,11 @@
+.root {
+    position: relative;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-second-over);
+}

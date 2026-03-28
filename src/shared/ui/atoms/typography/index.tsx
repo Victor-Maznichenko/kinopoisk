@@ -7,13 +7,14 @@ export const Typography = <E extends ElementType = 'p'>({
   as,
   children,
   className,
+  primaryColor = false,
   variant = 'text-m',
   ...props
 }: TypographyProps<E>) => {
   const Component = as ?? 'p';
 
   return (
-    <Component className={clsx(styles[variant], className)} {...props}>
+    <Component className={clsx(styles[variant], primaryColor && styles.primaryColor, className)} {...props}>
       {children}
     </Component>
   );
