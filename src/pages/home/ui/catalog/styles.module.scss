@@ -21,3 +21,14 @@
     }
 }
 
+.slider {
+    .arrow {
+        visibility: hidden;
+    }
+
+    &:hover {
+        .arrow {
+            visibility: visible;
+        }
+    }
+}

@@ -3,18 +3,18 @@ import 'swiper/css/effect-creative';
 import type { ComponentProps } from 'react';
 import clsx from 'clsx';
 import { EffectCreative } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { SliderDefault } from '../slider-default';
 import styles from './styles.module.scss';
 
 const Z_AXIS_DEPH = -436;
 const MOVE_PERCENTAGE = '92%';
 
-const Slide = ({ className, ...props }: ComponentProps<typeof SwiperSlide>) => (
-  <SwiperSlide className={clsx(styles.slide, className)} {...props} />
+const Slide = ({ className, ...props }: ComponentProps<typeof SliderDefault.Slide>) => (
+  <SliderDefault.Slide className={clsx(styles.slide, className)} {...props} />
 );
 
-const Root = ({ className, children, modules = [], ...props }: ComponentProps<typeof Swiper>) => (
-  <Swiper
+const Root = ({ className, children, modules, ...props }: ComponentProps<typeof SliderDefault.Root>) => (
+  <SliderDefault.Root
     className={clsx(styles.slider, className)}
     creativeEffect={{
       limitProgress: 3,
@@ -22,15 +22,14 @@ const Root = ({ className, children, modules = [], ...props }: ComponentProps<ty
       prev: { translate: [`-${MOVE_PERCENTAGE}`, 0, Z_AXIS_DEPH] },
       next: { translate: [MOVE_PERCENTAGE, 0, Z_AXIS_DEPH] }
     }}
-    modules={[EffectCreative, ...modules]}
-    slidesPerView='auto'
+    modules={[EffectCreative, ...(modules ?? [])]}
+    prev={<SliderDefault.Prev />}
     effect='creative'
-    grabCursor
     loop
     {...props}
   >
     {children}
-  </Swiper>
+  </SliderDefault.Root>
 );
 
 Slide.displayName = 'SwiperSlide';

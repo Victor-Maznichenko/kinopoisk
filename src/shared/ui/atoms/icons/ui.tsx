@@ -58,7 +58,7 @@ export const Search = withDefaultProps(({ size = 20, ...props }) => (
   </svg>
 ));
 
-export const ArrowRight = withDefaultProps(({ size = 38, ...props }) => (
+export const ArrowRight = withDefaultProps(({ size = 35, ...props }) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 37 23' width={size} fill='none' {...props}>
     <path d='M36.0357 9.98621C36.6215 10.572 36.6215 11.5217 36.0357 12.1075L26.4897 21.6535C25.9039 22.2393 24.9542 22.2393 24.3684 21.6535C23.7826 21.0677 23.7826 20.1179 24.3684 19.5322L32.8537 11.0469L24.3684 2.56159C23.7826 1.97581 23.7826 1.02606 24.3684 0.440273C24.9542 -0.145514 25.9039 -0.145514 26.4897 0.440273L36.0357 9.98621ZM0 11.0469L0 9.54688L34.975 9.54688V11.0469V12.5469L0 12.5469L0 11.0469Z' fill='currentColor' />
   </svg>

@@ -6,6 +6,7 @@ type ButtonVariants =
   | 'filled-red'
   | 'outline-white-icon'
   | 'outline-white'
+  | 'text'
   | 'unstyled';
 
 interface ButtonOwnProps<T> {
@@ -27,7 +28,7 @@ export const Button = <T extends ElementType = 'button'>({
   ...props
 }: ButtonProps<T>) => {
   const isDisabled = loading || disabled;
-  const Component = as || 'button';
+  const Component = as ?? 'button';
 
   const defaultButtonProps = {
     type: 'button' as const,

@@ -13,16 +13,21 @@
   text-decoration: none;
   display: inline-block;
   padding: 1.125rem 1.5rem;
-  transition: opacity 0.25s, transform cubic-bezier(.3,0,0,1) 60ms;
+  transition: opacity 0.25s, scale cubic-bezier(.3,0,0,1) 60ms;
   border-radius: var(--border-radius-md);
 
   &:hover {
-    transform: scale(1.04);
+    scale: 1.04;
   }
 
   &:active {
-    transform: scale(1);
+    scale: 1;
     opacity: 0.8;
+  }
+
+  .disabled, &:disabled {
+    pointer-events: none;
+    opacity: 0.6;
   }
 }
 
@@ -40,14 +45,19 @@
   line-height: 0;
 }
 
-.disabled {
-  pointer-events: none;
-  opacity: 0.6;
+.text, .unstyled {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.text {
+  line-height: 1;
+  display: inline;
+  font-weight: 600;
+  font-size: var(--fs-text_M);
+  color: var(--color-white);
 }
 
 .unstyled {
-  all: unset;
-  box-sizing: border-box;
   display: inline-block;
-  cursor: pointer;
 }

@@ -5,11 +5,11 @@ import { Footer, Header } from '@/widgets';
 import styles from './styles.module.scss';
 
 const Layout = () => (
-  <>
+  <div className={styles.wrapper}>
     <Header className={styles.header} />
-    <Outlet />
+    <main className={styles.main}><Outlet /></main>
     <Footer />
-  </>
+  </div>
 );
 
 const router = createBrowserRouter([

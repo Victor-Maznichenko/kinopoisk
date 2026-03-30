@@ -3,8 +3,8 @@ import { create } from 'zustand';
 import { requests } from '@/shared/api';
 
 interface MovieState {
+  movie: DeepRequired<MovieDetails200> | null;
   getMovie: (id: number) => Promise<void>;
-  movie: Required<MovieDetails200> | null;
   error: string | null;
 
   isLoading: boolean;

@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 import clsx from 'clsx';
 import { buildStaticURL, COUNTRY_NAMES, formatDuration } from '@/shared/lib';
 import { Button, Icons, Typography } from '@/shared/ui/atoms';
-import { MoviePreviewContext, useMoviePreviewContext } from './lib/context';
+import { MoviePreviewContext, useMoviePreviewContext } from './lib';
 import styles from './styles.module.scss';
 
 interface MoviePreviewProps extends ComponentProps<'section'> {
@@ -68,11 +68,36 @@ const ButtonTrailer = ({ children, className, ...props }: ButtonProps) => (
   </Button>
 );
 
-const ButtonLike = ({ children, className, ...props }: ButtonProps) => (
-  <Button className={clsx(styles.button, className)} variant='outline-white-icon' {...props}>
-    <Icons.Heart />
-  </Button>
-);
+// Сделать хук useLike(id) и использовать там useLocalStorage возможно
+const ButtonLike = ({ children, className, ...props }: ButtonProps) => {
+  const movie = useMoviePreviewContext();
+
+  const handleLike = () => {
+    const likes = localStorage.getItem('liked_films');
+
+    if (!likes) {
+      localStorage.setItem('liked_films', JSON.stringify([movie.id]));
+      return;
+    }
+
+    const likesArr = JSON.parse(likes) as number[];
+    console.log(likesArr);
+
+    if (likesArr.includes(movie.id)) {
+      localStorage.setItem('liked_films', JSON.stringify(likesArr.filter((id) => id !== movie.id)));
+      return;
+    }
+
+    likesArr.push(movie.id);
+    localStorage.setItem('liked_films', JSON.stringify(likesArr));
+  };
+
+  return (
+    <Button className={clsx(styles.button, className)} variant='outline-white-icon' onClick={handleLike} {...props}>
+      <Icons.Heart />
+    </Button>
+  );
+};
 
 const MoviePreview = ({ className, movie, children, style = {}, ...props }: MoviePreviewProps) => {
   const rootStyle = {

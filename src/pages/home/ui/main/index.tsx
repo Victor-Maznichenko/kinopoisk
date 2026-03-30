@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { buildStaticURL } from '@/shared/lib';
-import { useMoviesStore } from '@/entities/movies';
 import { Button, SliderСoverflow, Typography } from '@/shared/ui';
+import { useHomeStore } from '../../model';
 import styles from './styles.module.scss';
 
 const HOMEPAGE_CONTENT = {
@@ -12,7 +12,7 @@ const HOMEPAGE_CONTENT = {
 };
 
 export const Main = () => {
-  const { getPopularMovies, popularMovies } = useMoviesStore();
+  const { getPopularMovies, popularMovies } = useHomeStore();
 
   useEffect(() => {
     getPopularMovies();

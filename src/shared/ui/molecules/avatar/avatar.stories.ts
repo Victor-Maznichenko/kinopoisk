@@ -18,6 +18,6 @@ type Story = StoryObj<typeof meta>;
 export const Example: Story = {
   args: {
     text: 'Avatar',
-    size: 56
+    size: 54
   }
 };

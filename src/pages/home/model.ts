@@ -1,3 +1,7 @@
+// QUESTION: Я вынес это в модель для Home т.к. это нигде больше не используется но по факту я мог вынести это в entities если бы это использовалось где-то еще
+// Также я запрашиваю 1 страницу всегда у меня нет функции запросить больше
+// Это норм что я вынес это в модуль и ограничил функционал хотя по факту API может намного больше, как по мне норм)
+
 import type { DiscoverMovie200ResultsItem, MoviePopularList200ResultsItem } from '@/shared/api';
 import { create } from 'zustand';
 import { requests } from '@/shared/api';
@@ -8,14 +12,14 @@ interface MoviesByGenre {
   id: number;
 }
 
-interface MoviesState {
+interface HomeState {
   popularMovies: MoviePopularList200ResultsItem[],
   getMoviesByGenres: () => Promise<void>,
   getPopularMovies: () => Promise<void>,
   moviesByGenres: MoviesByGenre[]
 }
 
-export const useMoviesStore = create<MoviesState>()((set) => ({
+export const useHomeStore = create<HomeState>()((set) => ({
   popularMovies: [],
   moviesByGenres: [],
 

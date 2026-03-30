@@ -1,0 +1,20 @@
+.root {
+    margin-bottom: 120px;
+}
+
+.title {
+    margin-bottom: 60px;
+}
+
+.info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.details {
+    max-width: 615px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+}
