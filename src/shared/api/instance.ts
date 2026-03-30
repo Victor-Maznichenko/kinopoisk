@@ -6,7 +6,6 @@ const ACCESS_API_KEY = import.meta.env.VITE_ACCESS_API_KEY;
 export const api = axios.create({
   baseURL: BASE_URL,
   timeout: 60000,
-  withCredentials: true,
   params: {
     language: 'ru',
   },
