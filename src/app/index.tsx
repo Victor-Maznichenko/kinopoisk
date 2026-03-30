@@ -1,13 +1,15 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router';
 import { ROUTES } from '@/shared/lib';
 import { HomePage, LoginPage, MoviePage, NotFoundPage, ProfilePage, RegisterPage } from '@/pages';
-import { Footer, Header } from '@/widgets';
+import { Footer, Header } from '@/shared/ui';
 import styles from './styles.module.scss';
 
 const Layout = () => (
   <div className={styles.wrapper}>
     <Header className={styles.header} />
-    <main className={styles.main}><Outlet /></main>
+    <main className={styles.main}>
+      <Outlet />
+    </main>
     <Footer />
   </div>
 );

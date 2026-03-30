@@ -11,7 +11,7 @@
     font-weight: $weight;
     font-display: swap;
     src:
-      url('fonts/woff2/' + $font-family + '-' + $weightStr + '.woff2') format('woff2'),
-      url('fonts/woff/' + $font-family + '-' + $weightStr + '.woff') format('woff');
+      url('@/shared/assets/fonts/' + $font-family + '-' + $weightStr + '.woff2') format('woff2'),
+      url('@/shared/assets/fonts/' + $font-family + '-' + $weightStr + '.woff') format('woff');
   }
 }

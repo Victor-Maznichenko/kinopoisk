@@ -81,7 +81,6 @@ const ButtonLike = ({ children, className, ...props }: ButtonProps) => {
     }
 
     const likesArr = JSON.parse(likes) as number[];
-    console.log(likesArr);
 
     if (likesArr.includes(movie.id)) {
       localStorage.setItem('liked_films', JSON.stringify(likesArr.filter((id) => id !== movie.id)));

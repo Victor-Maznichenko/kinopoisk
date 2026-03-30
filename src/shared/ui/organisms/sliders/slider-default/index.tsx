@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { useMemo, useRef } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useForkRef } from '@/shared/lib';
 import { Button, Icons } from '@/shared/ui/atoms';
 import { SliderContext, useSliderContext } from './lib';
 import styles from './styles.module.scss';
@@ -13,19 +14,21 @@ interface RootProps extends ComponentProps<typeof Swiper> {
   next?: ReactNode;
 }
 
-const Prev = ({ className, hide, ...props }: ComponentProps<typeof Button>) => {
+const Prev = ({ className, hide, ref, ...props }: ComponentProps<typeof Button>) => {
   const { prevRef } = useSliderContext();
+  const handleRef = useForkRef(ref, prevRef);
   return (
-    <Button className={clsx(styles.buttonPrev, hide && styles.hide, className)} variant='unstyled' ref={prevRef} {...props}>
+    <Button className={clsx(styles.buttonPrev, hide && styles.hide, className)} variant='unstyled' ref={handleRef} {...props}>
       <Icons.ArrowRight />
     </Button>
   );
 };
 
-const Next = ({ className, hide, ...props }: ComponentProps<typeof Button>) => {
+const Next = ({ className, hide, ref, ...props }: ComponentProps<typeof Button>) => {
   const { nextRef } = useSliderContext();
+  const handleRef = useForkRef(ref, nextRef);
   return (
-    <Button className={clsx(styles.buttonNext, hide && styles.hide, className)} variant='unstyled' ref={nextRef} {...props}>
+    <Button className={clsx(styles.buttonNext, hide && styles.hide, className)} variant='unstyled' ref={handleRef} {...props}>
       <Icons.ArrowRight />
     </Button>
   );

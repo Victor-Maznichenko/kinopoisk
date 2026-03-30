@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { Link } from 'react-router';
-import { Avatar, Button, Icons, Typography } from '@/shared/ui';
+import { Button, Icons, Typography } from '@/shared/ui/atoms';
+import { Avatar } from '@/shared/ui/molecules';
 import styles from './styles.module.scss';
 
 const NAVIGATION_LINKS = [

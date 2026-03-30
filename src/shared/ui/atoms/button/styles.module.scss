@@ -12,7 +12,7 @@
   text-overflow: ellipsis;
   text-decoration: none;
   display: inline-block;
-  padding: 1.125rem 1.5rem;
+  padding: 18px 24px;
   transition: opacity 0.25s, scale cubic-bezier(.3,0,0,1) 60ms;
   border-radius: var(--border-radius-md);
 
@@ -38,7 +38,7 @@
 
 .outline-white, .outline-white-icon {
   color: var(--color-white);
-  border: 0.0625rem solid var(--color-white);
+  border: 1px solid var(--color-white);
 }
 
 .outline-white-icon {

@@ -1,6 +1,6 @@
 import type { ComponentProps, ElementType } from 'react';
 import clsx from 'clsx';
-import { Typography } from '../../atoms';
+import { Typography } from '@/shared/ui/atoms';
 import styles from './styles.module.scss';
 
 interface MovieCardOwnProps<T> {

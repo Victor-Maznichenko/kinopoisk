@@ -5,9 +5,7 @@ import { Button, MovieCard, SliderDefault, Typography } from '@/shared/ui';
 import { useHomeStore } from '../../model';
 import styles from './styles.module.scss';
 
-const SHORTEST_LENGTH = 5;
-
-export const Catalog = () => {
+export const Catalog = ({ genresCount = 5 }) => {
   const [isShortList, setIsShortList] = useState(true);
   const { getMoviesByGenres, moviesByGenres } = useHomeStore();
 
@@ -15,7 +13,7 @@ export const Catalog = () => {
     getMoviesByGenres();
   }, []);
 
-  const genresLength = isShortList ? SHORTEST_LENGTH : moviesByGenres.length;
+  const genresLength = isShortList ? genresCount : moviesByGenres.length;
   const buttonText = isShortList ? 'Посмотреть всё' : 'Скрыть';
   const handleClick = () => setIsShortList((state) => !state);
 

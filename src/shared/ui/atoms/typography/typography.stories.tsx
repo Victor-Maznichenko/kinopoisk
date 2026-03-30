@@ -42,7 +42,7 @@ export const AllVariants: Story = {
   },
 
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'flex-start' }}>
       <Typography variant='heading_1'>Heading 1 (72px)</Typography>
       <Typography variant='heading_2'>Heading 2 (48px)</Typography>
       <Typography variant='heading_3'>Heading 3 (32px)</Typography>

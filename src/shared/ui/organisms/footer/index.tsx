@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { ROUTES } from '@/shared/lib';
-import { Icons, Typography } from '@/shared/ui';
+import { Icons, Typography } from '@/shared/ui/atoms';
 import { CONTACTS, NAVIGATION_DATA, SOCIALS } from './lib';
 import styles from './styles.module.scss';
 
