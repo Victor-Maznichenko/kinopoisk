@@ -5,6 +5,10 @@ import { MoviePreview, Typography } from '@/shared/ui';
 import { useMoviesStore } from './model';
 import styles from './styles.module.scss';
 
+const MOVIE_CONTENT = {
+  aboutTitle: 'О фильме'
+};
+
 export const MoviePage = () => {
   const id = useParams()?.id ?? '-1';
   const { movie, getMovie, reset } = useMoviesStore();
@@ -34,7 +38,7 @@ export const MoviePage = () => {
         <section className={styles.info}>
           <div className={styles.details}>
             <div className={styles.about}>
-              <Typography className={styles.title} variant='heading_2' as='h2'>О фильме</Typography>
+              <Typography className={styles.title} variant='heading_2' as='h2'>{MOVIE_CONTENT.aboutTitle}</Typography>
               <Typography>{movie.overview}</Typography>
             </div>
 

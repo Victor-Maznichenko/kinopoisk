@@ -9,6 +9,8 @@ import styles from './styles.module.scss';
 type InputTextVariants = 'default' | 'rounded' | 'unstyled';
 type InputValue = number | string | undefined;
 
+const PHONE_MASK = '+7(###)###-##-##';
+
 interface InputProps extends ComponentProps<'input'> {
   type?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url',
   variant?: InputTextVariants,
@@ -111,7 +113,7 @@ export const InputText = ({
           then={(
             <PatternFormat
               className={clsx(styles.input, inputClassName)}
-              format={phoneMask || '+7(###)###-##-##'}
+              format={phoneMask || PHONE_MASK}
               getInputRef={handleRef}
               allowEmptyFormatting
               mask='_'
@@ -144,7 +146,3 @@ export const InputText = ({
     </Typography>
   );
 };
-
-// QUESTION: Существует 2 варианта input когда смещается при ошибке и когда появляется tooltip
-// Зачем нужен вариант когда текст просто из неоткуда всплывает и есть ли способы сделать чтобы он появлялся без смещения остальных элементов, возможно ли это?
-// Чисто по логике как будто бы нет, место для ошибки не может появится из неоткуда.

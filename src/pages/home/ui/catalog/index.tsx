@@ -5,6 +5,10 @@ import { Button, MovieCard, SliderDefault, Typography } from '@/shared/ui';
 import { useMoviesByGenres } from '../../model';
 import styles from './styles.module.scss';
 
+const CATALOG_CONTENT = {
+  title: 'Каталог фильмов и сериалов',
+};
+
 export const Catalog = ({ genresCount = 5 }) => {
   const [isShortList, setIsShortList] = useState(true);
   const { getMoviesByGenres, moviesByGenres } = useMoviesByGenres();
@@ -19,7 +23,7 @@ export const Catalog = ({ genresCount = 5 }) => {
 
   return (
     <section className={styles.catalog}>
-      <Typography className={styles.title} variant='heading_2'>Каталог фильмов и сериалов</Typography>
+      <Typography className={styles.title} variant='heading_2'>{CATALOG_CONTENT.title}</Typography>
       <div className={styles.genresList}>
         {
           moviesByGenres.slice(0, genresLength).map(({ id, name, list }) => (
