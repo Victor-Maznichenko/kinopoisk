@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
+import { Autoplay } from 'swiper/modules';
 import { buildStaticURL } from '@/shared/lib';
 import { Button, SliderСoverflow, Typography } from '@/shared/ui';
-import { useHomeStore } from '../../model';
+import { usePopularMovies } from '../../model';
 import styles from './styles.module.scss';
 
 const HOMEPAGE_CONTENT = {
@@ -12,7 +13,7 @@ const HOMEPAGE_CONTENT = {
 };
 
 export const Main = () => {
-  const { getPopularMovies, popularMovies } = useHomeStore();
+  const { getPopularMovies, popularMovies } = usePopularMovies();
 
   useEffect(() => {
     getPopularMovies();
@@ -25,15 +26,13 @@ export const Main = () => {
         <Typography className={styles.description} variant='text-m'>{HOMEPAGE_CONTENT.description}</Typography>
         <Button className={styles.button}>{HOMEPAGE_CONTENT.buttonText}</Button>
       </div>
-      <SliderСoverflow.Root>
-        {
-          popularMovies.map(({ id, title, poster_path }) => (
-            <SliderСoverflow.Slide className={styles.slide} key={id}>
-              <img className={styles.slide__img} src={buildStaticURL(poster_path)} />
-              <Typography as='h6'>{title}</Typography>
-            </SliderСoverflow.Slide>
-          ))
-        }
+      <SliderСoverflow.Root modules={[Autoplay]} speed={500} autoplay>
+        {popularMovies.map(({ id, title, poster_path }) => (
+          <SliderСoverflow.Slide className={styles.slide} key={id}>
+            <img className={styles.slide__img} src={buildStaticURL(poster_path)} />
+            <Typography as='h6'>{title}</Typography>
+          </SliderСoverflow.Slide>
+        ))}
       </SliderСoverflow.Root>
     </section>
   );

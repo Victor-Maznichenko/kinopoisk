@@ -1,6 +1,5 @@
 @use 'mixins' as *;
 
 @include font-face(ProximaNova, 400, 'Regular');
-@include font-face(ProximaNova, 600, 'SemiBold');
 @include font-face(ProximaNova, 700, 'Bold');
 @include font-face(ProximaNova, 800, 'Extrabold');

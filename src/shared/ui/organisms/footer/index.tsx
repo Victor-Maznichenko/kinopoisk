@@ -25,7 +25,7 @@ export const Footer = () => (
                       <ul>
                         {
                           links.map(({ label, route }) => (
-                            <li className={styles.listItem} key={route}>
+                            <li className={styles.listItem} key={label}>
                               <Link to={route}>{ label }</Link>
                             </li>
                           ))

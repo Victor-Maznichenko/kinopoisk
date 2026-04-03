@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { buildStaticURL, ROUTES } from '@/shared/lib';
 import { Button, MovieCard, SliderDefault, Typography } from '@/shared/ui';
-import { useHomeStore } from '../../model';
+import { useMoviesByGenres } from '../../model';
 import styles from './styles.module.scss';
 
 export const Catalog = ({ genresCount = 5 }) => {
   const [isShortList, setIsShortList] = useState(true);
-  const { getMoviesByGenres, moviesByGenres } = useHomeStore();
+  const { getMoviesByGenres, moviesByGenres } = useMoviesByGenres();
 
   useEffect(() => {
     getMoviesByGenres();
