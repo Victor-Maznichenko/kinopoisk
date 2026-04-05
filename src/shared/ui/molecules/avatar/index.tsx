@@ -10,7 +10,16 @@ interface AvatarProps extends ComponentProps<'img'> {
   size?: number;
 }
 
-export const Avatar = ({ src, variant = 'square', size = 54, text, ...props }: AvatarProps) => (
+const Skeleton = ({ src, variant = 'square', size = 54, ...props }: AvatarProps) => (
+  <div
+    className={clsx(styles.avatar, variant && styles[variant])}
+    style={{ '--avatar-size': `${size}px`, ...props.style } as React.CSSProperties}
+  >
+    <Skeleton />
+  </div>
+);
+
+const Avatar = ({ src, variant = 'square', size = 54, text, ...props }: AvatarProps) => (
   <div
     className={clsx(styles.avatar, variant && styles[variant], !text && !src && styles.iconPlaceholder)}
     style={{ '--avatar-size': `${size}px`, ...props.style } as React.CSSProperties}
@@ -24,3 +33,7 @@ export const Avatar = ({ src, variant = 'square', size = 54, text, ...props }: A
     />
   </div>
 );
+
+Avatar.Skeleton = Skeleton;
+
+export { Avatar };

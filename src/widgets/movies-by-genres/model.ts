@@ -1,20 +1,14 @@
-import type { DiscoverMovie200ResultsItem } from '@/shared/api';
+import type { MoviesByGenre } from './types';
 import { create } from 'zustand';
 import { requests } from '@/shared/api';
 
-interface MoviesByGenre {
-  list: (DiscoverMovie200ResultsItem & { genres_names?: string[] })[];
-  name: string;
-  id: number;
-}
-
-interface HomeState {
+interface MoviesByGenreState {
   getMoviesByGenres: () => Promise<void>,
   moviesByGenres: MoviesByGenre[],
   isLoading: boolean,
 }
 
-export const useMoviesByGenres = create<HomeState>()((set) => ({
+export const useMoviesByGenres = create<MoviesByGenreState>()((set) => ({
   isLoading: true,
   moviesByGenres: [],
 

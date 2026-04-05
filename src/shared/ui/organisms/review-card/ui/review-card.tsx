@@ -15,6 +15,7 @@ export const ReviewCard = memo(({ className, author_details, content }: ReviewCa
     <div className={className}>
       <div className={styles.person}>
         <Avatar variant='circle' src={avatarSrc} />
+        <Avatar.Skeleton variant='circle' />
         <div>
           <Typography className={styles.personName} as='b'>{author_details.name}</Typography>
           <Typography className={styles.personDate} variant='text-s'>1 октября 2019</Typography>

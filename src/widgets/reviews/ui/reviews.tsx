@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Button, Typography } from '@/shared/ui';
-import { useReviewsStore } from '../../model';
-import { ReviewCard } from '../review-card';
+import { useReviewsStore } from '../model';
+import { ReviewsList } from './reviews-list';
+import { ReviewsListSkeleton } from './reviews-list-skeleton';
 import styles from './styles.module.scss';
 
 interface ReviewsProps {
@@ -35,21 +36,14 @@ export const Reviews = ({ movieId }: ReviewsProps) => {
         Рецензии
       </Typography>
 
-      <div className={styles.reviewsList}>
-        {displayedReviews.map((review) => (
-          <ReviewCard
-            className={styles.review}
-            key={review.id}
-            {...review}
-          />
-        ))}
+      <ReviewsList reviews={displayedReviews} />
+      <ReviewsListSkeleton limit={LIMIT} />
 
-        {hasExpandedButton && (
-          <Button variant='outline-white' onClick={handleToggle}>
-            {isExpanded ? 'Свернуть' : 'Посмотреть всё'}
-          </Button>
-        )}
-      </div>
+      {hasExpandedButton && (
+        <Button variant='outline-white' onClick={handleToggle}>
+          {isExpanded ? 'Свернуть' : 'Посмотреть всё'}
+        </Button>
+      )}
     </div>
   );
 };
