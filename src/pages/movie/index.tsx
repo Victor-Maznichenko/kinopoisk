@@ -13,6 +13,8 @@ export const MoviePage = () => {
   const id = useParams()?.id ?? '-1';
   const { movie, getMovie, reset } = useMoviesStore();
 
+  console.log('MoviePage rendered, id:', id, 'movie exists:', !!movie);
+
   useEffect(() => {
     getMovie(Number(id));
     return () => reset();

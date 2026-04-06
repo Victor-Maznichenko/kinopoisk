@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, Typography } from '@/shared/ui';
+import { Button, Condition, Typography } from '@/shared/ui';
 import { useReviewsStore } from '../model';
 import { ReviewsList } from './reviews-list';
 import { ReviewsListSkeleton } from './reviews-list-skeleton';
@@ -13,7 +13,7 @@ const LIMIT = 2;
 
 export const Reviews = ({ movieId }: ReviewsProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const { list, getReviews, reset } = useReviewsStore();
+  const { isLoading, list, getReviews, reset } = useReviewsStore();
 
   const displayedReviews = isExpanded ? list : list.slice(0, LIMIT);
   const hasExpandedButton = list.length > LIMIT;
@@ -36,11 +36,20 @@ export const Reviews = ({ movieId }: ReviewsProps) => {
         Рецензии
       </Typography>
 
-      <ReviewsList reviews={displayedReviews} />
-      <ReviewsListSkeleton limit={LIMIT} />
+      {!isLoading && list.length === 0 && (
+        <Typography as='p'>
+          Рецензий пока нет...
+        </Typography>
+      )}
 
-      {hasExpandedButton && (
-        <Button variant='outline-white' onClick={handleToggle}>
+      <Condition
+        else={<ReviewsList reviews={displayedReviews} />}
+        then={<ReviewsListSkeleton limit={LIMIT} />}
+        value={isLoading}
+      />
+
+      {hasExpandedButton && !isLoading && (
+        <Button className={styles.expandButton} variant='outline-white' onClick={handleToggle}>
           {isExpanded ? 'Свернуть' : 'Посмотреть всё'}
         </Button>
       )}

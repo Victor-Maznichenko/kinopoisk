@@ -8,17 +8,22 @@ interface ReviewCardProps extends Required<MovieReviews200ResultsItem> {
   className?: string;
 }
 
-export const ReviewCard = memo(({ className, author_details, content }: ReviewCardProps) => {
+export const ReviewCard = memo(({ className, author_details, content, created_at }: ReviewCardProps) => {
   const avatarSrc = author_details.avatar_path ? buildStaticURL(author_details.avatar_path, 'logo') : undefined;
+
+  const formattedDate = new Date(created_at).toLocaleDateString('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
 
   return (
     <div className={className}>
       <div className={styles.person}>
         <Avatar variant='circle' src={avatarSrc} />
-        <Avatar.Skeleton variant='circle' />
         <div>
           <Typography className={styles.personName} as='b'>{author_details.name}</Typography>
-          <Typography className={styles.personDate} variant='text-s'>1 октября 2019</Typography>
+          <Typography className={styles.personDate} variant='text-s'>{formattedDate}</Typography>
         </div>
       </div>
       <div className={styles.overview}>

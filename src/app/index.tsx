@@ -1,7 +1,7 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router';
 import { ROUTES } from '@/shared/lib';
 import { HomePage, LoginPage, MoviePage, NotFoundPage, ProfilePage, RegisterPage } from '@/pages';
-import { Footer, Header } from '@/shared/ui';
+import { Footer, Header, ToastProvider } from '@/shared/ui';
 import styles from './styles.module.scss';
 
 const Layout = () => (
@@ -30,5 +30,7 @@ const router = createBrowserRouter([
 ]);
 
 export const App = () => (
-  <RouterProvider router={router} />
+  <ToastProvider>
+    <RouterProvider router={router} />
+  </ToastProvider>
 );

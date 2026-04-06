@@ -9,9 +9,11 @@ interface ContextValue {
 export const SliderContext = createContext<ContextValue | null>(null);
 
 export const useSliderContext = () => {
-  const ctx = use(SliderContext);
-  if (!ctx) {
+  const contextValue = use(SliderContext);
+
+  if (!contextValue) {
     throw new Error('useSliderContext must be used within a <SliderContext />');
   }
-  return ctx;
+
+  return contextValue;
 };
