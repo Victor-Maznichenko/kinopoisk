@@ -15,4 +15,3 @@ bun run lint            # проверка кода ESLint
 bun run storybook       # запуск Storybook
 bun run build-storybook # сборка Storybook
 ```
-

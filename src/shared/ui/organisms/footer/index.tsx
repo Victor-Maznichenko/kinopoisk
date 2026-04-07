@@ -12,7 +12,7 @@ export const Footer = () => (
           <Link to={ROUTES.ROOT}>
             <Icons.Logo />
           </Link>
-          <Typography>© КиноДом 2020</Typography>
+          <Typography>© КиноДом ${new Date().getFullYear()}</Typography>
         </div>
         <nav className={styles.navigation}>
           {
