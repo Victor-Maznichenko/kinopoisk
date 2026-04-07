@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { requests } from '@/shared/api';
+import { toast } from '@/shared/ui/kit';
 
 interface SessionState {
   getRequestToken: () => Promise<void>;
@@ -19,9 +20,12 @@ export const useSessionStore = create<SessionState>()(() => ({
       }
 
       // Нужно поставить слушатель на страницу // /approved и если добавится queryParam requestToken то начать получение getSession
-    } catch (error) {
-      // TODO: заменить на toast
-      console.error(error);
+    } catch {
+      toast.add({
+        title: 'Ошибка',
+        message: 'Не удалось получить токен. Попробуйте позже.',
+        variant: 'error'
+      });
     }
   }
   // getSession: () => {

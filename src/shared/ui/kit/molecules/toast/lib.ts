@@ -1,26 +1,56 @@
-import { createContext, use } from 'react';
-
 export interface ToastType {
   variant: 'error' | 'info' | 'success';
   message: string;
   title: string;
-  id: number;
+  id: string;
 };
 
-export interface ToastContextValue {
-  close: (id: ToastType['id']) => void,
-  add: (toast: ToastType) => void,
-  clear: () => void,
-}
+interface ToastInput extends Omit<ToastType, 'id'> {
+  timeout?: number;
+};
+type Listener = (toasts: ToastType[]) => void;
 
-export const ToastContext = createContext<ToastContextValue | null>(null);
+let state: ToastType[] = [];
+const listeners = new Set<Listener>();
+const emit = () => listeners.forEach((listener) => listener(state));
 
-export const useToastContext = () => {
-  const contextValue = use(ToastContext);
+export const toast = {
+  add({ timeout = 3000, ...rest }: ToastInput) {
+    const item: ToastType = {
+      ...rest,
+      id: crypto.randomUUID()
+    };
 
-  if (!contextValue) {
-    throw new Error('useToastContext must be used within a <ToastContext />');
+    state = [...state, item].slice(-5);
+    emit();
+
+    setTimeout(() => {
+      this.close(item.id);
+    }, timeout);
+
+    return item.id;
+  },
+
+  close(id: string) {
+    state = state.filter((t) => t.id !== id);
+    emit();
+  },
+
+  clear() {
+    state = [];
+    emit();
+  },
+
+  subscribe(listener: Listener) {
+    listeners.add(listener);
+    listener(state);
+
+    return () => {
+      listeners.delete(listener);
+    };
+  },
+
+  getSnapshot() {
+    return state;
   }
-
-  return contextValue;
 };

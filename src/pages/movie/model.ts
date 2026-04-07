@@ -1,6 +1,7 @@
 import type { MovieDetails200 } from '@/shared/api';
 import { create } from 'zustand';
 import { requests } from '@/shared/api';
+import { toast } from '@/shared/ui/kit';
 
 interface MovieState {
   movie: DeepRequired<MovieDetails200> | null;
@@ -58,9 +59,12 @@ export const useMoviesStore = create<MovieState>()((set) => ({
       const response = await requests.movieDetails(id);
       const movie = response.data as Required<MovieDetails200> ?? null;
       set({ movie });
-    } catch (error) {
-      // TODO: заменить на toast
-      console.error(error);
+    } catch {
+      toast.add({
+        title: 'Ошибка',
+        message: 'Не удалось загрузить фильм. Попробуйте позже.',
+        variant: 'error'
+      });
     }
   },
   reset: () => {

@@ -1,6 +1,7 @@
 import type { MovieReviews200ResultsItem } from '@/shared/api';
 import { create } from 'zustand';
 import { requests } from '@/shared/api';
+import { toast } from '@/shared/ui/kit';
 
 type ReviewsList = DeepRequired<MovieReviews200ResultsItem>[];
 
@@ -26,9 +27,12 @@ export const useReviewsStore = create<ReviewsState>()((set) => ({
       const response = await requests.movieReviews(id, { language: 'en-US' });
       const list = response.data.results as ReviewsList ?? [];
       set({ list });
-    } catch (error) {
-      // TODO: заменить на toast
-      console.error(error);
+    } catch {
+      toast.add({
+        title: 'Ошибка',
+        message: 'Не удалось загрузить отзывы. Попробуйте позже.',
+        variant: 'error'
+      });
     }
   },
   reset: () => {

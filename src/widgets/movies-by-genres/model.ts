@@ -1,6 +1,7 @@
 import type { MoviesByGenre } from './types';
 import { create } from 'zustand';
 import { requests } from '@/shared/api';
+import { toast } from '@/shared/ui/kit';
 
 interface MoviesByGenreState {
   getMoviesByGenres: () => Promise<void>,
@@ -41,9 +42,12 @@ export const useMoviesByGenres = create<MoviesByGenreState>()((set) => ({
       }));
 
       set((state) => ({ ...state, isLoading: false }));
-    } catch (error) {
-      // TODO: заменить на toast
-      console.error(error);
+    } catch {
+      toast.add({
+        title: 'Ошибка',
+        message: 'Не удалось загрузить фильмы по жанрам. Попробуйте позже.',
+        variant: 'error'
+      });
     }
   }
 }));

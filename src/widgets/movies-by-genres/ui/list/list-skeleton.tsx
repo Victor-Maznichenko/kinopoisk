@@ -17,7 +17,7 @@ export const MoviesListSkeleton = ({ genresCount }: MoviesListSkeletonProps) => 
             {
               Array.from({ length: 4 }).map((_, i) => (
                 <div key={i}>
-                  <Skeleton height={245} key={i} />
+                  <Skeleton key={crypto.randomUUID()} height={245} />
                   <Skeleton variant='text' width={150} height={15} key={i} />
                 </div>
               ))
