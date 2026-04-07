@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { Reviews } from '@/widgets';
-import { MoviePreview } from '@/shared/ui/modules';
 import { Typography } from '@/shared/ui/kit';
+import { MoviePreview } from '@/shared/ui/modules';
 import { useMoviesStore } from './model';
 import styles from './styles.module.scss';
 
@@ -18,10 +18,6 @@ export const MoviePage = () => {
     getMovie(Number(id));
     return () => reset();
   }, [id]);
-
-  if (!movie) {
-    return null;
-  }
 
   return (
     <main className={styles.root}>
@@ -40,7 +36,7 @@ export const MoviePage = () => {
           <div className={styles.details}>
             <div className={styles.about}>
               <Typography className={styles.title} variant='heading_2' as='h2'>{MOVIE_CONTENT.aboutTitle}</Typography>
-              <Typography>{movie.overview}</Typography>
+              <Typography>{movie?.overview}</Typography>
             </div>
 
             <Reviews movieId={Number(id)} />

@@ -1,5 +1,4 @@
-import { use, useEffect, useState } from 'react';
-import { ToggleContext } from '@/shared/context';
+import { useEffect, useState } from 'react';
 import { Button, Condition, Typography } from '@/shared/ui/kit';
 import { useReviewsStore } from '../../model';
 import { ReviewsList, ReviewsListSkeleton } from '../list';
@@ -14,7 +13,6 @@ const LIMIT = 2;
 export const Reviews = ({ movieId }: ReviewsProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { isLoading, list, getReviews, reset } = useReviewsStore();
-  const { isOpen } = use(ToggleContext);
 
   const displayedReviews = isExpanded ? list : list.slice(0, LIMIT);
   const hasExpandedButton = list.length > LIMIT;
@@ -46,7 +44,7 @@ export const Reviews = ({ movieId }: ReviewsProps) => {
       <Condition
         else={<ReviewsList reviews={displayedReviews} />}
         then={<ReviewsListSkeleton limit={LIMIT} />}
-        value={isOpen}
+        value={isLoading}
       />
 
       {hasExpandedButton && !isLoading && (

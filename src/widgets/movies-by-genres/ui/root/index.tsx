@@ -1,5 +1,4 @@
-import { use, useEffect, useState } from 'react';
-import { ToggleContext } from '@/shared/context';
+import { useEffect, useState } from 'react';
 import { Button, Condition, Typography } from '@/shared/ui/kit';
 import { useMoviesByGenres } from '../../model';
 import { MoviesList, MoviesListSkeleton } from '../list';
@@ -12,7 +11,6 @@ const CATALOG_CONTENT = {
 export const MoviesByGenres = ({ genresCount = 5 }) => {
   const [isShortList, setIsShortList] = useState(true);
   const { isLoading, getMoviesByGenres, moviesByGenres } = useMoviesByGenres();
-  const { isOpen } = use(ToggleContext);
 
   useEffect(() => {
     getMoviesByGenres();
@@ -28,7 +26,7 @@ export const MoviesByGenres = ({ genresCount = 5 }) => {
       <Condition
         then={<MoviesListSkeleton genresCount={genresCount} />}
         else={<MoviesList moviesByGenres={list} />}
-        value={isOpen}
+        value={isLoading}
       />
       <Button variant='outline-white' onClick={handleClick}>{buttonText}</Button>
     </section>

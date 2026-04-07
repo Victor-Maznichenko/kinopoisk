@@ -7,7 +7,7 @@ import { MoviePreviewContext, useMoviePreviewContext } from './lib';
 import styles from './styles.module.scss';
 
 interface MoviePreviewProps extends ComponentProps<'section'> {
-  movie: Required<MovieDetails200>
+  movie: Required<MovieDetails200> | null,
 }
 
 interface TitleProps extends ComponentProps<typeof Typography<'h1'>> {}
@@ -23,8 +23,8 @@ const Title = ({ children, ...props }: TitleProps) => {
 
 const Info = ({ children, className, ...props }: TitleProps) => {
   const { vote_average, release_date, origin_country, genres, runtime } = useMoviePreviewContext();
-  const rate = String(vote_average).slice(0, 3);
-  const year = new Date(release_date).getFullYear();
+  const rate = String(vote_average ?? '').slice(0, 3);
+  const year = new Date(release_date ?? '').getFullYear();
 
   return (
     <div className={clsx(styles.info, className)} {...props}>
@@ -70,7 +70,7 @@ const ButtonTrailer = ({ children, className, ...props }: ButtonProps) => (
 
 const ButtonLike = ({ children, className, ...props }: ButtonProps) => {
   const movie = useMoviePreviewContext();
-  const { isLiked, toggleLike } = useLike(movie.id);
+  const { isLiked, toggleLike } = useLike(movie?.id);
 
   return (
     <Button className={clsx(styles.button, isLiked && styles.liked, className)} variant='outline-white-icon' onClick={toggleLike} {...props}>
@@ -82,7 +82,7 @@ const ButtonLike = ({ children, className, ...props }: ButtonProps) => {
 const MoviePreview = ({ className, movie, children, style = {}, ...props }: MoviePreviewProps) => {
   const rootStyle = {
     ...style,
-    backgroundImage: `url(${buildStaticURL(movie.backdrop_path)})`
+    backgroundImage: `url(${buildStaticURL(movie?.backdrop_path)})`
   };
 
   return (
