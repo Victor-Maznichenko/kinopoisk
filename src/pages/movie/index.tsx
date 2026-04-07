@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { Reviews } from '@/widgets';
-import { MoviePreview, Typography } from '@/shared/ui';
+import { MoviePreview } from '@/shared/ui/modules';
+import { Typography } from '@/shared/ui/kit';
 import { useMoviesStore } from './model';
 import styles from './styles.module.scss';
 
@@ -12,8 +13,6 @@ const MOVIE_CONTENT = {
 export const MoviePage = () => {
   const id = useParams()?.id ?? '-1';
   const { movie, getMovie, reset } = useMoviesStore();
-
-  console.log('MoviePage rendered, id:', id, 'movie exists:', !!movie);
 
   useEffect(() => {
     getMovie(Number(id));

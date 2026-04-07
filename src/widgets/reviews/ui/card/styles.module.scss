@@ -1,0 +1,28 @@
+.reviewCard {
+    width: 100%;
+}
+
+.overview {
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--color-white);
+}
+
+.person, .overview {
+    display: flex;
+    align-items: center;
+}
+
+.person {
+    column-gap: 12px;
+    margin-bottom: 30px;
+    color: var(--color-white);
+
+    &Name {
+        margin-bottom: 5px;
+    }
+
+    &Date {
+        color: var(--color-white-50);
+    }
+}

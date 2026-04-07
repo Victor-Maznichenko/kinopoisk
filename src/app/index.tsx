@@ -1,18 +1,9 @@
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import { ToggleContextProvider } from '@/shared/context';
 import { ROUTES } from '@/shared/lib';
-import { HomePage, LoginPage, MoviePage, NotFoundPage, ProfilePage, RegisterPage } from '@/pages';
-import { Footer, Header, ToastProvider } from '@/shared/ui';
-import styles from './styles.module.scss';
-
-const Layout = () => (
-  <div className={styles.wrapper}>
-    <Header className={styles.header} />
-    <main className={styles.main}>
-      <Outlet />
-    </main>
-    <Footer />
-  </div>
-);
+import { HomePage, MoviePage, NotFoundPage } from '@/pages';
+import { ToastProvider } from '@/shared/ui/kit';
+import { Layout } from './layout';
 
 const router = createBrowserRouter([
   {
@@ -21,16 +12,15 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: ROUTES.PROFILE, element: <ProfilePage /> },
-      { path: ROUTES.MOVIE, element: <MoviePage /> },
-      { path: ROUTES.LOGIN, element: <LoginPage /> },
-      { path: ROUTES.REGISTER, element: <RegisterPage /> }
+      { path: ROUTES.MOVIE, element: <MoviePage /> }
     ]
   }
 ]);
 
 export const App = () => (
-  <ToastProvider>
-    <RouterProvider router={router} />
-  </ToastProvider>
+  <ToggleContextProvider>
+    <ToastProvider>
+      <RouterProvider router={router} />
+    </ToastProvider>
+  </ToggleContextProvider>
 );

@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { use, useEffect } from 'react';
 import { Link } from 'react-router';
 import { Autoplay } from 'swiper/modules';
+import { ToggleContext } from '@/shared/context';
 import { buildStaticURL, ROUTES } from '@/shared/lib';
-import { Button, Condition, Skeleton, SliderСoverflow, Typography } from '@/shared/ui';
+import { Button, Condition, Skeleton, SliderСoverflow, Typography } from '@/shared/ui/kit';
 import { usePopularMovies } from '../../model';
 import styles from './styles.module.scss';
 
@@ -15,6 +16,7 @@ const HOMEPAGE_CONTENT = {
 
 export const Main = () => {
   const { isLoading, getPopularMovies, popularMovies } = usePopularMovies();
+  const { isOpen } = use(ToggleContext);
 
   useEffect(() => {
     getPopularMovies();
@@ -49,9 +51,8 @@ export const Main = () => {
             ))}
           </SliderСoverflow.Root>
         )}
-        value={isLoading}
+        value={isOpen}
       />
-
     </section>
   );
 };
