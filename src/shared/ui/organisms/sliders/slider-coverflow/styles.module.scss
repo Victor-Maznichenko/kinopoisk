@@ -1,0 +1,25 @@
+.slider {
+  width: 100%;
+  max-width: 910px;
+  perspective: 1200px;
+  padding-left: 60px;
+}
+
+.slide {
+  width: 380px;
+  border-radius: 12px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition-property: transform;
+  filter: blur(3.6px);
+  opacity: 0 !important;
+  min-height: 546px;
+}
+
+.slide:global(.swiper-slide-active){
+  filter: blur(0);
+}
+
+.slide:global(.swiper-slide-visible){
+  opacity: 1 !important;
+}

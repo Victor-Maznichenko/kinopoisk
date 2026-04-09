@@ -1,0 +1,28 @@
+.main {
+    padding: 205px 0 210px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url('@/shared/assets/images/main-background.webp');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% auto;
+}
+
+.info {
+    max-width: 426px;
+}
+
+.description {
+    margin: 20px 0 35px;
+}
+
+.slide {
+    &__img {
+        height: 490px;
+        width: 100%;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 10px;
+    }
+}

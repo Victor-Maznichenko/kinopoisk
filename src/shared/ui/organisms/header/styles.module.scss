@@ -1,0 +1,28 @@
+.inner, .start, .end, .navList {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    min-height: 115px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--color-white-15);
+}
+
+.inner {
+    justify-content: space-between;
+}
+
+.start {
+    column-gap: 60px;
+}
+
+.end, .navList {
+    column-gap: 30px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}

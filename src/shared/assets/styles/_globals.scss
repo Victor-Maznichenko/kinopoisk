@@ -12,31 +12,8 @@
   padding: 0;
 }
 
-::selection {
-  background: var(--color-orange-light);
-  color: var(--color-text);
-}
-
-html {
-  --site-scale: calc(100vw / #{$desktop});
-  font-size: calc(var(--site-scale) * 16px);
-  scrollbar-gutter: stable;
-
-  @include to($lg) {
-    --site-scale: calc(100vw / #{$lg});
-  }
-
-  @include to($tablet) {
-    --site-scale: calc(100vw / #{$tablet});
-  }
-
-  @include to($mobile) {
-    --site-scale: calc(100vw / #{$mobile});
-  }
-}
-
 body {
-  font-family: Poppins, sans-serif;
+  font-family: ProximaNova, sans-serif;
   background-color: var(--color-background);
   font-optical-sizing: auto;
   color: var(--color-text);
@@ -60,9 +37,10 @@ a {
 }
 
 .container {
-  max-width: 1140px;
+  max-width: 1430px;
   padding: 0 15px;
   margin: 0 auto;
+  width: 100%;
 }
 
 ul,

@@ -3,19 +3,22 @@
 
 :root {
    /*=== Colors === */
-   --color-white: #fff;
+   --color-white: oklch(1 0 0);
+   --color-white-80: oklab(100% 0 -0.00011 / 80%);
+   --color-white-50: oklch(1 0 0 / 50%);
+   --color-white-15: oklab(100% 0 -0.00011 / 15%);
    --color-gray: oklch(0.8594 0.0125 280.981);
    --color-card: oklch(0.187 0.091 298.566);
-   --color-background: oklch(94% 0 90);
-   --color-text: oklch(23.161% 0.02 285);
+   --color-background: oklch(19.032% 0.04178 290.626);
+   --color-text: oklch(100% 0.00011 271.152 / 50%);
    --color-red: oklch(0.599 0.23883 22.797);
    --color-purple-black: oklch(0.1903 0.04178 290.626);
 
    /*=== border-radius === */
-   --border-radius-sm: 0.25rem;
-   --border-radius-md: 0.5rem;
-   --border-radius-lg: 0.75rem;
-   --border-radius-max: 1000rem;
+   --border-radius-sm: 5px;
+   --border-radius-md: 10px;
+   --border-radius-lg: 12px;
+   --border-radius-max: 100000px;
 
    /*=== Layers === */
    --z-under: -1;
@@ -27,13 +30,13 @@
    --trans-medium: 0.4s ease-in-out;
 
    /*=== Fonts ===*/
-   --fs-heading_1: 4.5rem;
-   --fs-heading_2: 3rem;
-   --fs-heading_3: 2rem;
-   --fs-heading_4: 1.5rem;
-   --fs-heading_5: 1.25rem;
-   --fs-text_L: 1.125rem;
-   --fs-text_M: 1rem;
-   --fs-text_S: 0.75rem;
+   --fs-heading_1: 72px;
+   --fs-heading_2: 48px;
+   --fs-heading_3: 32px;
+   --fs-heading_4: 24px;
+   --fs-heading_5: 20px;
+   --fs-heading_6: 18px;
+   --fs-text-m: 16px;
+   --fs-text-s: 14px;
 }
 

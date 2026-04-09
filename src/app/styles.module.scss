@@ -1,0 +1,18 @@
+.wrapper {
+    min-height: 100dvh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-second-over);
+}
+
+.main {
+    flex: 1 0 auto;
+}
