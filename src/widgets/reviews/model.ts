@@ -27,7 +27,8 @@ export const useReviewsStore = create<ReviewsState>()((set) => ({
       const response = await requests.movieReviews(id, { language: 'en-US' });
       const list = response.data.results as ReviewsList ?? [];
       set({ list });
-    } catch {
+    } catch (error) {
+      console.error(error);
       toast.add({
         title: 'Ошибка',
         message: 'Не удалось загрузить отзывы. Попробуйте позже.',

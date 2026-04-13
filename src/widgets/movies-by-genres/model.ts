@@ -1,53 +1,88 @@
 import type { MoviesByGenre } from './types';
+import type { GenreMovieList200GenresItem } from '@/shared/api';
 import { create } from 'zustand';
 import { requests } from '@/shared/api';
 import { toast } from '@/shared/ui/kit';
 
+const LIMIT = 5;
+const findGenreById = (genres: GenreMovieList200GenresItem[], id: number) => genres.find((g) => g.id === id);
+
 interface MoviesByGenreState {
   getMoviesByGenres: () => Promise<void>,
+  genres: GenreMovieList200GenresItem[],
   moviesByGenres: MoviesByGenre[],
+  getGenres: () => Promise<void>,
   isLoading: boolean,
+  offset: number,
+  limit: number,
 }
 
-export const useMoviesByGenres = create<MoviesByGenreState>()((set) => ({
+export const useMoviesByGenres = create<MoviesByGenreState>()((set, get) => ({
   isLoading: true,
   moviesByGenres: [],
+  genres: [],
+  offset: 0,
+  limit: LIMIT,
+
+  getGenres: async () => {
+    try {
+      const genresResponse = await requests.genreMovieList();
+      set({
+        genres: genresResponse.data?.genres ?? []
+      });
+    } catch (error) {
+      console.error(error);
+      toast.add({
+        title: 'Ошибка',
+        message: 'Не удалось загрузить жанры. Попробуйте позже.',
+        variant: 'error'
+      });
+    }
+  },
 
   getMoviesByGenres: async () => {
     try {
-      const genresResponse = await requests.genreMovieList();
-      const genresMovieList = genresResponse.data?.genres ?? [];
+      const { genres, getGenres, limit, offset } = get();
+      if (!genres.length) await getGenres();
 
-      const moviesPromises = genresMovieList.map(({ id = -1 }) => requests.discoverMovie({ with_genres: String(id) }));
-      const moviesResponse = (await Promise.all(moviesPromises)).map((response) => response.data.results);
-      const moviesByGenres = moviesResponse.map((moviesInGenre, i) => {
-        const { name, id } = genresMovieList[i];
+      const promises = genres
+        .slice(offset, offset + limit)
+        .map(({ id }) =>
+          requests.discoverMovie({
+            with_genres: String(id ?? -1)
+          })
+        );
 
-        if (!name || !id || !moviesInGenre) {
+      const responses = await Promise.all(promises);
+      const results = responses.map((response) => response.data.results);
+      const preparedData = results.map((moviesByGenre, i) => {
+        const { name, id } = genres[i];
+
+        if (!name || !id || !moviesByGenre) {
           throw new Error('Неверный ответ от сервера');
         }
 
-        moviesInGenre = moviesInGenre.map(({ genre_ids = [], ...movieInGenre }) => ({
-          ...movieInGenre,
+        moviesByGenre = moviesByGenre.map(({ genre_ids = [], ...movie }) => ({
+          ...movie,
           genre_ids,
-          genres_names: genre_ids.map((id) => genresMovieList.find((g) => g.id === id)?.name ?? '')
+          genres_names: genre_ids.map((id) => findGenreById(genres, id)?.name ?? '')
         }));
 
-        return { id, name, list: moviesInGenre };
+        return { id, name, list: moviesByGenre };
       });
 
-      set((state) => ({
-        ...state,
-        moviesByGenres
+      set(({ moviesByGenres }) => ({
+        moviesByGenres: [...moviesByGenres, ...preparedData],
+        offset: offset + limit,
+        isLoading: false
       }));
-
-      set((state) => ({ ...state, isLoading: false }));
-    } catch {
+    } catch (error) {
       toast.add({
         title: 'Ошибка',
         message: 'Не удалось загрузить фильмы по жанрам. Попробуйте позже.',
         variant: 'error'
       });
+      console.error(error);
     }
   }
 }));

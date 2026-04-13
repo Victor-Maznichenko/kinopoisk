@@ -4,6 +4,8 @@ import { HomePage, MoviePage, NotFoundPage } from '@/pages';
 import { Toaster } from '@/shared/ui/kit';
 import { Layout } from './layout';
 
+history.scrollRestoration = 'manual';
+
 const router = createBrowserRouter([
   {
     path: ROUTES.ROOT,

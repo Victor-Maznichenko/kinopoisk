@@ -59,7 +59,8 @@ export const useMoviesStore = create<MovieState>()((set) => ({
       const response = await requests.movieDetails(id);
       const movie = response.data as Required<MovieDetails200> ?? null;
       set({ movie });
-    } catch {
+    } catch (error) {
+      console.error(error);
       toast.add({
         title: 'Ошибка',
         message: 'Не удалось загрузить фильм. Попробуйте позже.',

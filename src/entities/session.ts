@@ -20,7 +20,8 @@ export const useSessionStore = create<SessionState>()(() => ({
       }
 
       // Нужно поставить слушатель на страницу // /approved и если добавится queryParam requestToken то начать получение getSession
-    } catch {
+    } catch (error) {
+      console.error(error);
       toast.add({
         title: 'Ошибка',
         message: 'Не удалось получить токен. Попробуйте позже.',

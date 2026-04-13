@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Button, Condition, Typography } from '@/shared/ui/kit';
+import { useEffect } from 'react';
+import { useIntersectionObserver } from '@/shared/lib';
+import { Condition, Typography } from '@/shared/ui/kit';
 import { useMoviesByGenres } from '../../model';
 import { MoviesList, MoviesListSkeleton } from '../list';
 import styles from './styles.module.scss';
@@ -9,26 +10,24 @@ const CATALOG_CONTENT = {
 };
 
 export const MoviesByGenres = ({ genresCount = 5 }) => {
-  const [isShortList, setIsShortList] = useState(true);
   const { isLoading, getMoviesByGenres, moviesByGenres } = useMoviesByGenres();
+  const { ref: bottomRef } = useIntersectionObserver<HTMLDivElement>({
+    callback: ({ isIntersecting }) => (isIntersecting ? getMoviesByGenres() : undefined)
+  });
 
   useEffect(() => {
     getMoviesByGenres();
   }, []);
-
-  const list = isShortList ? moviesByGenres.slice(0, genresCount) : moviesByGenres;
-  const buttonText = isShortList ? 'Посмотреть всё' : 'Скрыть';
-  const handleClick = () => setIsShortList((state) => !state);
 
   return (
     <section className={styles.catalog}>
       <Typography className={styles.title} variant='heading_2'>{CATALOG_CONTENT.title}</Typography>
       <Condition
         then={<MoviesListSkeleton genresCount={genresCount} />}
-        else={<MoviesList moviesByGenres={list} />}
+        else={<MoviesList moviesByGenres={moviesByGenres} />}
         value={isLoading}
       />
-      <Button variant='outline-white' onClick={handleClick}>{buttonText}</Button>
+      <div className={styles.bottom} ref={bottomRef} />
     </section>
   );
 };

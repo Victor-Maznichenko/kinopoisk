@@ -13,7 +13,7 @@ export const MoviesListSkeleton = ({ genresCount }: MoviesListSkeletonProps) => 
           <Typography className={styles.genreTitle} variant='heading_4' as='h4'>
             <Skeleton variant='text' width={150} />
           </Typography>
-          <div className={styles.skeletonSlider}>
+          <div className={styles.list}>
             {
               Array.from({ length: 4 }).map((_, i) => (
                 <div key={i}>
