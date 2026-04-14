@@ -47,7 +47,3 @@ ul,
 li {
   list-style: none;
 }
-
-dialog:-internal-dialog-in-top-layer::backdrop {
-  background-color: var(--color-black-25);
-}
