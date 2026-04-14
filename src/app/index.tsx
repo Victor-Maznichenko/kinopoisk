@@ -1,19 +1,34 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { ROUTES } from '@/shared/lib';
-import { HomePage, MoviePage, NotFoundPage } from '@/pages';
 import { Toaster } from '@/shared/ui/kit';
 import { Layout } from './layout';
-
-history.scrollRestoration = 'manual';
 
 const router = createBrowserRouter([
   {
     path: ROUTES.ROOT,
     element: <Layout />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: ROUTES.MOVIE, element: <MoviePage /> },
-      { path: '*', element: <NotFoundPage /> }
+      {
+        index: true,
+        lazy: async () => {
+          const { HomePage } = await import('@/pages/home');
+          return { Component: HomePage };
+        }
+      },
+      {
+        path: ROUTES.MOVIE,
+        lazy: async () => {
+          const { MoviePage } = await import('@/pages/movie');
+          return { Component: MoviePage };
+        }
+      },
+      {
+        path: '*',
+        lazy: async () => {
+          const { NotFoundPage } = await import('@/pages/not-found');
+          return { Component: NotFoundPage };
+        }
+      }
     ]
   }
 ]);
