@@ -1,0 +1,57 @@
+.skeleton {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: #592a7d;
+  border-radius: 0.5rem;
+  vertical-align: middle;
+  user-select: none;
+  pointer-events: none;
+  color: transparent;
+  isolation: isolate;
+  min-height: 1em;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      rgba(#2b1638, 0) 0%,
+      rgba(#2b1638, 0.45) 50%,
+      rgba(#2b1638, 0) 100%
+    );
+    animation: skeleton-shimmer 1s ease-in-out infinite;
+  }
+}
+
+.circle {
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+
+.square {
+  border-radius: 0.5rem;
+}
+
+.text {
+  min-height: 1em;
+  height: 1em;
+  border-radius: 0.35rem;
+}
+
+.textGroup {
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+  }
+}

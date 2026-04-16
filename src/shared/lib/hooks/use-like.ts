@@ -1,7 +1,8 @@
+import { LOCAL_STORAGE_KEYS } from '../constants';
 import { useLocalStorage } from './use-local-storage';
 
 export const useLike = (movieId: number) => {
-  const [value, setValue] = useLocalStorage<number[]>({ key: 'likes_movies' });
+  const [value, setValue] = useLocalStorage<number[]>({ key: LOCAL_STORAGE_KEYS.MOVIES_LIKES });
 
   const isLiked = value?.includes(movieId);
 

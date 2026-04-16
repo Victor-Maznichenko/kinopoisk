@@ -1,34 +1,41 @@
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 import { ROUTES } from '@/shared/lib';
-import { HomePage, LoginPage, MoviePage, NotFoundPage, ProfilePage, RegisterPage } from '@/pages';
-import { Footer, Header } from '@/shared/ui';
-import styles from './styles.module.scss';
-
-const Layout = () => (
-  <div className={styles.wrapper}>
-    <Header className={styles.header} />
-    <main className={styles.main}>
-      <Outlet />
-    </main>
-    <Footer />
-  </div>
-);
+import { Toaster } from '@/shared/ui/kit';
+import { Layout } from './layout';
 
 const router = createBrowserRouter([
   {
     path: ROUTES.ROOT,
     element: <Layout />,
-    errorElement: <NotFoundPage />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: ROUTES.PROFILE, element: <ProfilePage /> },
-      { path: ROUTES.MOVIE, element: <MoviePage /> },
-      { path: ROUTES.LOGIN, element: <LoginPage /> },
-      { path: ROUTES.REGISTER, element: <RegisterPage /> }
+      {
+        index: true,
+        lazy: async () => {
+          const { HomePage } = await import('@/pages/home');
+          return { Component: HomePage };
+        }
+      },
+      {
+        path: ROUTES.MOVIE,
+        lazy: async () => {
+          const { MoviePage } = await import('@/pages/movie');
+          return { Component: MoviePage };
+        }
+      },
+      {
+        path: '*',
+        lazy: async () => {
+          const { NotFoundPage } = await import('@/pages/not-found');
+          return { Component: NotFoundPage };
+        }
+      }
     ]
   }
 ]);
 
-export const App = () => {
-  return <RouterProvider router={router} />;
-};
+export const App = () => (
+  <>
+    <RouterProvider router={router} />
+    <Toaster />
+  </>
+);

@@ -1,0 +1,32 @@
+.genresList {
+    margin-bottom: 64px;
+}
+
+.genre {
+    &Title {
+        text-transform: capitalize;
+        margin-bottom: 20px;
+    }
+
+    & + & {
+        margin-top: 50px;
+    }
+}
+
+.slider {
+    .arrow {
+        visibility: hidden;
+    }
+
+    &:hover {
+        .arrow {
+            visibility: visible;
+        }
+    }
+}
+
+.list {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
